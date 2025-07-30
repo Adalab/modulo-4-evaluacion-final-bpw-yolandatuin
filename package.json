@@ -1,0 +1,36 @@
+{
+  "name": "modulo-4-evaluacion-final-bpw-yolandatuin",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adalab/modulo-4-evaluacion-final-bpw-yolandatuin.git"
+  },
+  "keywords": [
+    "Node",
+    "MySQL",
+    "Simpsons"
+  ],
+  "author": "Yolanda Tuñón",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adalab/modulo-4-evaluacion-final-bpw-yolandatuin/issues"
+  },
+  "homepage": "https://github.com/Adalab/modulo-4-evaluacion-final-bpw-yolandatuin#readme",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "fund": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.3",
+    "nodemon": "^3.1.10"
+  }
+}
