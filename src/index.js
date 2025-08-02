@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const server = express();
-const PORT = 4000;
+const PORT = 4001;
 
 server.use(cors());
 server.use(express.json());
@@ -33,7 +33,7 @@ const getConnection = async () => {
 server.get('/frases', async (request, response) => {
     try {  
         const conn = await getConnection();
-        const [result] = await conn.query(' SELECT * FROM frases, personajes WHERE personaje_id = personajes.id;');
+        const [result] = await conn.query('SELECT * FROM frases, personajes WHERE personaje_id = personajes.id;');
         await conn.end();
 
         response.json({
@@ -113,6 +113,7 @@ server.post('/frases', async (request, response) => {
 
 //Eliminar una frase
 server.delete('/frases/:id', async (request, response) => {
+    const id = request.params.id;
     try {
         const conn = await getConnection();
         const [result] = await conn.query('DELETE FROM frases WHERE id = ?', [id]);                              
@@ -122,7 +123,7 @@ server.delete('/frases/:id', async (request, response) => {
             "success": true
         })
     }
-    catch {
+    catch (error) {
         response.status(500).json({message: error})
     }
 })
