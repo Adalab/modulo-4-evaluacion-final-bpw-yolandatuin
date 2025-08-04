@@ -1,26 +1,98 @@
-## Ejercicio para el pair programming
+# 📺 API de Frases Memorables de Los Simpsons
 
-Por petición de alumnas de promociones pasadas, hemos creado un ejercicio para que puedas programarlo día a día con tu pareja durante el horario de pair programming.
+Proyecto final del **Módulo 4 de Adalab**, centrado en el desarrollo de una **API REST** con Node.js, Express y MySQL. Esta API contiene frases memorables de los personajes de Los Simpsons, junto con la información de sus respectivos capítulos y personajes.
 
-En estos materiales encontraréis el enunciado de las tareas que debéis hacer cada día.
+## 🚀 Funcionalidades
 
-Es obligatorio que lo hagáis en la hora de pair programming porque:
+### 📥 GET
 
-- Aquí os enseñamos trucos y buenas prácticas.
-- Cuando a mitad de módulo cambies de pareja tendrás que seguir trabajando sobre tu ejercicio o el de tu nueva pareja.
+* `/frases` → Devuelve todas las frases de la API.
+* `/personajes` → Devuelve todos los personajes disponibles.
+* `/capitulos` → Devuelve todos los capítulos añadidos.
 
-## Enunciado del ejercicio (primera parte)
+También puedes acceder a un recurso específico por su ID:
 
-Todo el mundo sabe cómo se juega al ahorcado, pero aún así vamos a especificar lo que debemos hacer en el ejercicio. Os contamos lo que haremos en la primera parte del módulo. Cuando lleguemos a la lección del **Router** os contaremos la segunda parte.
+* `/frases/:id`
+* `/personajes/:id`
+* `/capitulos/:id`
 
-![](./react_ejercicio_ahorcado_enunciado-01.gif)
+---
 
-1. Al arrancar la página, el juego debe obtener una palabra aleatoria de una API. Esta palabra es la que la jugadora debe adivinar.
-   1. Una vez la API nos devuelve la palabra aleatoria debemos pintar en el apartado **Solución** varios guiones bajos para indicar a la jugadora la longitud de la palabra que debe adivinar.
-1. Cuando la usuaria escriba una letra en **Escribe una letra** tendremos que:
-   1. Actualizar la **Solución**:
-      - Si la letra escrita por la jugadora está entre las letras de la palabra buscada debemos mostrar las letras acertadas encima de los guiones correspondientes.
-   1. Actualizar **Las letras falladas**:
-      - Si la letra escrita por la jugadora no está entre las letras de la palabra buscada debemos pintarla en este apartado.
-   1. Actualizar el ahorcado:
-      - Si la letra escrita por la jugadora no está entre las letras de la palabra buscada debemos actualizar el CSS del ahorcado para que las líneas se pongan blancas.
+### ✏️ PUT (Actualizar)
+
+Puedes actualizar cualquier recurso desde **Postman**:
+
+* `/frases/:id`
+* `/personajes/:id`
+* `/capitulos/:id`
+
+📝 **Importante**:
+
+* En el Body de la petición debes incluir **todos los campos del objeto**, aunque solo quieras modificar uno.
+* En ocasiones, algunos campos mostrados no serán editables (por ejemplo, las frases que aparecen al acceder al ID de un personaje).
+
+---
+
+### ❌ DELETE
+
+Desde Postman, accediendo a:
+
+* `/frases/:id`
+* `/personajes/:id`
+* `/capitulos/:id`
+
+Podrás eliminar registros específicos.
+
+---
+
+### ➕ POST (Crear nuevo recurso)
+
+Puedes crear nuevos registros desde Postman en:
+
+* `/frases`
+* `/personajes`
+* `/capitulos`
+
+🛑 Asegúrate de enviar todos los campos requeridos en el **Body**. Si falta alguno, la API devolverá un error indicando que no se han completado todos los campos. 
+
+---
+
+## 🌐 Despliegue
+
+* La base de datos se ha creado en **Aiven**.
+* La API está desplegada en **Render** y disponible públicamente en:
+
+🔗 [https://modulo-4-evaluacion-final-bpw-yolandatuin.onrender.com/frases](https://modulo-4-evaluacion-final-bpw-yolandatuin.onrender.com/frases)
+
+---
+
+## 🔐 Seguridad
+
+* El proyecto utiliza **variables de entorno** para proteger credenciales y datos sensibles de conexión a base de datos.
+* El repositorio no expone datos confidenciales ya que se ha utilizado gitignore. 
+
+---
+
+## 🔄 Relaciones y Consultas
+
+* Se han utilizado **LEFT JOINs** para enriquecer los datos devueltos:
+
+  * Al consultar un personaje (`/personajes/:id`), también se incluyen sus frases.
+  * Al consultar una frase (`/frases/:id`), se incluye información del personaje y del capítulo asociado.
+
+---
+
+## 🌱 Próximos pasos
+
+En el futuro, me gustaría desarrollar una **interfaz visual (Frontend)** conectada a esta API para que cualquier usuario pueda explorar de manera sencilla el contenido.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+* Node.js
+* Express
+* MySQL (Aiven)
+* Render (deploy)
+* Postman (para pruebas)
+* Dotenv (para variables de entorno)
